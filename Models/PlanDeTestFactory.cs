@@ -21,7 +21,7 @@ public class PlanDeTestFactory
             NiveauPatrons      = niveaux,
             OperationsDisponibles = Enumerable.Range(1, 15).ToArray(),
             SequenceMesure     = GenererSequenceMesure(),
-            SeuilPrecision     = 5_000_000.0
+            SeuilPrecision     = 60.0 //seuil en %
         };
     }
 

@@ -16,12 +16,15 @@ public class SequenceMesure
     public double Comparer(Sequence s)
     {
         int[] v = s.GetValeurs();
-        double ecartTotal = 0;
+        const double maxEcartParValeur = (double)uint.MaxValue; // 4 294 967 295
+        double ecartNormalise = 0;
         for (int i = 0; i < 10; i++)
-            ecartTotal += Math.Abs((long)Valeurs[i] - v[i]);
-        return ecartTotal;
+        {
+            double ecart = Math.Abs((long)Valeurs[i] - v[i]);
+            ecartNormalise += ecart / maxEcartParValeur * 100.0;
+        }
+        return ecartNormalise / 10.0; // moyenne sur 10 valeurs → score 0–100
     }
-
     public override string ToString() =>
         $"[{string.Join(", ", Valeurs)}]";
 }
